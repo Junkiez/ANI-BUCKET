@@ -1,0 +1,62 @@
+@use "sass:list"
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap")
+@import './variables.sass'
+@import './theme.sass'
+
+body
+  font-family: "Bebas Neue", cursive
+  text-align: center
+  margin: 0
+  padding: 0
+
+  -ms-overflow-style: none
+  scrollbar-width: none
+
+body::-webkit-scrollbar
+  display: none
+
+h1
+  font-size: 3rem
+
+footer
+  text-align: left
+  padding-left: 10%
+
+hr
+  width: 80%
+
+ul
+  list-style-type: none
+  padding: 0
+
+h2
+  text-align: left
+  padding-left: 10%
+
+a
+  color: black
+  transition: all 0.1s ease-in-out
+  font-size: 1.25rem
+
+a:hover 
+  color: #999
+  transition: all 0.1s ease-in-out
+
+article.movie-container
+  display: grid
+
+  @for $i from 1 through 4
+    @media (min-width: list.nth($sizes, $i))
+      grid-template-columns: repeat($i, auto)
+
+li
+  @for $i from 2 through 4
+    @media (min-width: list.nth($sizes, $i))
+      display: inline-block
+
+.dark
+  @include app-theme($dark-theme)
+
+.light
+  @include app-theme($light-theme)
+

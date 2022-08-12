@@ -1,8 +1,8 @@
 import "./styles/main.sass";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./components/Index";
-import Movie from "./components/Movie";
-import NoPage from "./components/NoPage";
+import Index from "./pages/Main";
+import Movie from "./pages/Movie";
+import NoPage from "./pages/NoPage";
 
 export default function App() {
   return (

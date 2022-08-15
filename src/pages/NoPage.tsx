@@ -1,18 +1,22 @@
-import {useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function App() {
-    const [theme, setTheme] = useState("light");
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [timer, setTimer] = useState(4);
+  let interval = setInterval(() => {
+    if (timer !== 0) {
+      setTimer(timer - 1);
+    } else {
+      clearInterval(interval);
+      navigate("/");
+    }
+  }, 1000);
 
-    setTimeout(() => {
-        navigate("/");
-    }, 3000);
-
-    useEffect(() => {
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches)
-            setTheme("dark");
-    }, []);
-
-    return <article className={theme}><h1>404</h1></article>;
+  return (
+    <>
+      <h1>404</h1>
+      <h2>{timer}</h2>
+    </>
+  );
 }

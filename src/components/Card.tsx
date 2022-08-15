@@ -12,10 +12,7 @@ export default function Card(props: any) {
         className="movie-card"
         key={props["id"]}
       >
-        <img src={props.movie["image"]} alt={props.movie["image"]} />
-        <span className="short-description">
-          {props.movie["original_title"]}
-        </span>
+        <img src={props.movie["image"]} alt={props.movie["title"]} />
       </div>
     </>
   );

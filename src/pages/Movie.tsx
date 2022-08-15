@@ -1,30 +1,62 @@
-import {useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Card(props: any) {
-    const movie_data = JSON.parse(localStorage.getItem("movie_data") || "{}");
-    const navigate = useNavigate();
-    const [theme, setTheme] = useState("light");
+const about_movie = [
+  {
+    text: "director",
+    key: "director"
+  },
+  {
+    text: "producer",
+    key: "producer"
+  },
+  {
+    text: "release date",
+    key: "release_date"
+  },
+  {
+    text: "running time",
+    key: "running_time"
+  },
+  {
+    text: "rate score",
+    key: "rt_score"
+  }
+];
 
-    useEffect(() => {
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches)
-            setTheme("dark");
-    }, []);
-    return (
-        <article className={theme}>
+export default function Card() {
+  const movie_data = JSON.parse(localStorage.getItem("movie_data") || "{}");
+  const navigate = useNavigate();
+  return (
+    <>
+      <h1>
+        {movie_data["original_title"]} ({movie_data["title"]})
+      </h1>
+      <article>
+        <img
+          className="movie-illustration"
+          src={movie_data["image"]}
+          alt={movie_data["title"]}
+        />
+        <section>
+          <p className="movie-description">{movie_data["description"]}</p>
+          <ul>
+            {about_movie.map((o) => (
+              <li>
+                {o.text}: <mark>{movie_data[o.key]}</mark>
+              </li>
+            ))}
+          </ul>
+          <nav>
             <button
-                onClick={() => {
-                    navigate("/");
-                }}
+              onClick={() => {
+                navigate("/");
+              }}
             >
-                Home
+              ← back
             </button>
-            <div className="movie-card" key={props["id"]}>
-                <img src={movie_data?.image} alt={movie_data["image"]}/>
-                <span className="short-description">
-          {movie_data["original_title"]}
-        </span>
-            </div>
-        </article>
-    );
+          </nav>
+        </section>
+      </article>
+    </>
+  );
 }

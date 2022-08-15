@@ -1,0 +1,9 @@
+@use "sass:list"
+@import '../abstract/variables.sass'
+
+.nav-bar li
+  margin: 0
+  
+  @for $i from 2 through 4
+    @media (min-width: list.nth($sizes, $i))
+      display: inline-block

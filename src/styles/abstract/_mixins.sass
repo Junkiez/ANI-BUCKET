@@ -1,0 +1,5 @@
+@use "sass:map"
+
+@mixin app-theme($theme)
+  background-color: map.get($theme, "background")
+  color: map.get($theme, "color")

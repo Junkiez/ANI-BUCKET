@@ -1,0 +1,9 @@
+@use "sass:list"
+@import '../abstract/variables.sass'
+
+.movie-container
+  display: grid
+
+  @for $i from 1 through 4
+    @media (min-width: list.nth($sizes, $i))
+      grid-template-columns: repeat($i, auto)

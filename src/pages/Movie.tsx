@@ -38,6 +38,14 @@ export default function Card() {
           alt={movie_data["title"]}
         />
         <section>
+          <h2>
+            <ruby>
+              {movie_data["original_title"]}
+              <rp>(</rp>
+              <rt>{movie_data["original_title_romanised"]}</rt>
+              <rp>)</rp>
+            </ruby>
+          </h2>
           <p className="movie-description">{movie_data["description"]}</p>
           <ul>
             {about_movie.map((o) => (
